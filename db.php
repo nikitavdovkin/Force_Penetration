@@ -17,7 +17,7 @@ $user = R::dispense('users');
 $user->name = $name;
 $user->password = $password;
 R::store($user);
-retrun "User $user is created."
+return "User $user is created.";
 }
 
 function get_user($name)
