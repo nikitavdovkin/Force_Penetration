@@ -1,11 +1,11 @@
 <?php
 require 'db.php';
 
-$name = $_POST['Name'];
+$name = $_POST['name'];
 
 if(!isset($name))
 {
-echo 'Uncorrect data.';
+echo "Uncorrect data login. $name";
 exit;
 }
 

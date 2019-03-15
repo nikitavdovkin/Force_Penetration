@@ -1,12 +1,12 @@
 <?php
 require 'db.php';
 
-$name = $_POST['Name'];
-$pass = $_POST['Pass'];
+$name = $_POST['name'];
+$pass = $_POST['pass'];
 
 if(!isset($name) || !isset($pass))
 {
-echo 'Uncorrect data.';
+echo "Uncorrect data register. name: $name pass: $pass";
 exit;
 }
 

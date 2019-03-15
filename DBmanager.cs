@@ -1,43 +1,49 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class DBmanager : MonoBehaviour {
+public class DBmanager : MonoBehaviour
+{
 
     public string userName;
     public string password;
 
-
-
-    void Start () {
-        StartCoroutine(GetUser());
-	}
-	
-    private IEnumerator RegisterUser()
+    private void Awake()
     {
-        WWWForm form = new WWWForm();
-        form.AddField("Name: ", userName);
-        form.AddField("Password: ", password);
-        WWW www = new WWW("https://nikitos25574.000webhostapp.com/Force%20Penetration/register.php", form);
-        yield return www;
-        if (www.error != null)
-        {
-            Debug.Log("Error: " + www.error);
-            yield break;
-        }
-        Debug.Log("Server answer: " + www.text);
     }
 
-    private IEnumerator GetUser()
+    void Start () {
+        StartCoroutine(Register());
+    }
+
+
+    IEnumerator Login()
     {
         WWWForm form = new WWWForm();
-        form.AddField("Name: ", userName);
-        WWW www = new WWW("https://nikitos25574.000webhostapp.com/Force%20Penetration/login.php", form);
-        yield return www;
-        if (www.error != null)
+        form.AddField("name", userName);
+        WWW download = new WWW("http://nikitos25574.000webhostapp.com/login.php", form);
+        yield return download;
+        Debug.Log(download.text);
+        if (download.error != null)
         {
-            Debug.Log("Error: " + www.error);
+            Debug.Log("Error: " + download.error);
             yield break;
         }
-        Debug.Log("Server answer: " + www.text);
+        Debug.Log("Server answer: " + download.text);
+    }
+	
+    IEnumerator Register()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("name", userName);
+        form.AddField("pass", password);
+        WWW download = new WWW("http://nikitos25574.000webhostapp.com/register.php", form);
+        yield return download;
+        Debug.Log(download.text);
+        if (download.error != null)
+        {
+            Debug.Log("Error: " + download.error);
+            yield break;
+        }
+        Debug.Log("Server answer: " + download.text);
     }
 }

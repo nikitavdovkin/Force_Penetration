@@ -1,13 +1,14 @@
 <?php
 require 'rb-mysql.php';
 
-R::setup('mysql:host=localhost,dbname=id4164452_account', 'id4164452_nktkin', 'nktkinnktkin');
+R::setup('mysql:host=localhost;dbname=id4164452_account', 'id4164452_nktkin', '12345678' );
 
 if(!R::testConnection())
 {
 echo 'Cannot connect to the database.';
 exit;
 }
+
 
 function register_user($name,$password)
 {
