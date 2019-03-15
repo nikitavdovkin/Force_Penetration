@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DBmanager : MonoBehaviour
 {
@@ -29,6 +30,14 @@ public class DBmanager : MonoBehaviour
             yield break;
         }
         Debug.Log("Server answer: " + download.text);
+        if (download.text != "User is not found.")
+        {
+            SceneManager.LoadScene("firstmap");
+        }
+        else
+        {
+            Debug.Log("Bad login.");
+        }
     }
 	
     public IEnumerator Register()
