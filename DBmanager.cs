@@ -1,25 +1,25 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DBmanager : MonoBehaviour
 {
+    public new InputField name;
+    public new InputField pass;
 
-    public string userName;
-    public string password;
-
-    private void Awake()
+    public void Log()
     {
+        StartCoroutine(Login());
     }
-
-    void Start () {
+    public void Reg()
+    {
         StartCoroutine(Register());
     }
 
-
-    IEnumerator Login()
+    public IEnumerator Login()
     {
         WWWForm form = new WWWForm();
-        form.AddField("name", userName);
+        form.AddField("name", name.text);
         WWW download = new WWW("http://nikitos25574.000webhostapp.com/login.php", form);
         yield return download;
         Debug.Log(download.text);
@@ -31,11 +31,11 @@ public class DBmanager : MonoBehaviour
         Debug.Log("Server answer: " + download.text);
     }
 	
-    IEnumerator Register()
+    public IEnumerator Register()
     {
         WWWForm form = new WWWForm();
-        form.AddField("name", userName);
-        form.AddField("pass", password);
+        form.AddField("name", name.text);
+        form.AddField("pass", pass.text);
         WWW download = new WWW("http://nikitos25574.000webhostapp.com/register.php", form);
         yield return download;
         Debug.Log(download.text);
