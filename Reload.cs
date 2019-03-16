@@ -7,7 +7,7 @@ public class Reload : MonoBehaviour {
 
 	void Update () 
     {
-        if(Input.GetMouseButtonDown(0) &ReloadTimer<=0) 
+        if(Input.GetMouseButtonDown(0) & ReloadTimer<=0) 
         { 
             ReloadTimer = ReloadSpeed;  
         }
@@ -16,11 +16,18 @@ public class Reload : MonoBehaviour {
         {
             ReloadTimer -= Time.deltaTime;
         } 
-  
-     }
+    }
+
     void OnGUI()
     {
         int w = Screen.width, h = Screen.height;
-        GUI.Box(new Rect(w/2,h/2,100,30),"Reload: "+ ReloadTimer.ToString("f1"));
+        if (ReloadTimer <= 0.1)
+        {
+            GUI.Box(new Rect(w / 2, h / 2, 100, 30), "Reload: Ready!");
+        }
+        else
+        {
+            GUI.Box(new Rect(w / 2, h / 2, 100, 30), "Reload: " + ReloadTimer.ToString("f1"));
+        }
     }
 }

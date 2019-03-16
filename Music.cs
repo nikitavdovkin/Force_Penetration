@@ -9,12 +9,9 @@ public class Music : MonoBehaviour
     {
         audio = GetComponent<AudioSource>();
     }
-
-    void Update()
+    
+    public void Click()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) 
-            audio.PlayOneShot(audioClip);
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-            audio.Stop();
+        audio.PlayOneShot(audioClip);
     }
 }

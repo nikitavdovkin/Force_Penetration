@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DBmanager : MonoBehaviour
 {
     public new InputField name;
-    public new InputField pass;
+    public InputField pass;
+    public new GameObject gameObject;
 
     public void Log()
     {
@@ -29,6 +31,18 @@ public class DBmanager : MonoBehaviour
             yield break;
         }
         Debug.Log("Server answer: " + download.text);
+        if (download.text != "User is not found.")
+        {
+            if(gameObject.active == false)
+            {
+                gameObject.active = true;
+            }
+            SceneManager.LoadScene("firstmap");
+        }
+        else
+        {
+            Debug.Log("Bad login.");
+        }
     }
 	
     public IEnumerator Register()
