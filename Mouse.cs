@@ -1,8 +1,9 @@
 ﻿using System;
 using UnityEngine;
 using System.Runtime.InteropServices;
+using UnityEngine.Networking;
 
-public class Mouse : MonoBehaviour
+public class Mouse : NetworkBehaviour
 {
     public float mouseSensitivity = 100.0f;
     public float clampAngle = 80.0f;

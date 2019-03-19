@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class Minimap : MonoBehaviour {
+public class Minimap : MonoBehaviour
+{
 
     public Transform pltr;
     public Camera cam;

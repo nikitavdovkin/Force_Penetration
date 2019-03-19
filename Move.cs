@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class Move : MonoBehaviour
+public class Move : NetworkBehaviour
 {
     CharacterController mainobj;
     public float speed = 60.0f;
