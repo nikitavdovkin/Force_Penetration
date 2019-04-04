@@ -15,7 +15,9 @@ public class ESC : MonoBehaviour
             SceneManager.LoadScene("MapPicker", LoadSceneMode.Single);
             NetworkManagerHUD hud = FindObjectOfType<NetworkManagerHUD>();
             if (hud != null)
+            {
                 hud.showGUI = false;
+            }
         }
     }      
 }

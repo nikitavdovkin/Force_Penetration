@@ -1,16 +1,32 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class MapOFF : MonoBehaviour
 {
 
     public GameObject obj;
-    public bool check = false;
+    bool check = false;
+    float currCountdownValue;
 
-	void LateUpdate () {
-        if (Input.GetKey(KeyCode.M))
+    void LateUpdate () {
+        if (Input.GetKeyDown(KeyCode.M))
         {
-            obj.active = check;
-            check =! check;
+            StartCoroutine(StartCountdown());
+        }
+    }
+
+    public IEnumerator StartCountdown(float countdownValue = 1)
+    {
+        currCountdownValue = countdownValue;
+        while (currCountdownValue > 0)
+        {
+            yield return new WaitForSeconds(1.0f);
+            currCountdownValue--;
+            if (currCountdownValue < 1)
+            {
+                obj.SetActive(check);
+                check = !check;
+            }
         }
     }
 }

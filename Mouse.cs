@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using System.Runtime.InteropServices;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 
 public class Mouse : NetworkBehaviour

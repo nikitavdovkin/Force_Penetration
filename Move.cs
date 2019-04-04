@@ -8,7 +8,7 @@ public class Move : NetworkBehaviour
     Vector3 moveDirection = Vector3.zero;
     void Start()
     {
-        mainobj = this.GetComponent<CharacterController>();
+        mainobj = GetComponent<CharacterController>();
     }
     void Update()
     {

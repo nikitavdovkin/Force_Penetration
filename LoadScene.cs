@@ -1,18 +1,17 @@
 ﻿using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
-using UnityEngine;
 
 
 public class LoadScene : NetworkBehaviour {
-
-    public bool id;
 
     public void F_Map()
     {
         SceneManager.LoadScene("firstmap", LoadSceneMode.Single);
         NetworkManagerHUD hud = FindObjectOfType<NetworkManagerHUD>();
         if (hud == null)
+        {
             hud.showGUI = true;
+        }
     }
 
     public void S_Map()
@@ -20,7 +19,9 @@ public class LoadScene : NetworkBehaviour {
         SceneManager.LoadScene("secondmap", LoadSceneMode.Single);
         NetworkManagerHUD hud = FindObjectOfType<NetworkManagerHUD>();
         if (hud == null)
+        {
             hud.showGUI = true;
+        }
     }
 
     public void T_Map()
@@ -28,6 +29,18 @@ public class LoadScene : NetworkBehaviour {
         SceneManager.LoadScene("TestField", LoadSceneMode.Single);
         NetworkManagerHUD hud = FindObjectOfType<NetworkManagerHUD>();
         if (hud == null)
+        {
             hud.showGUI = true;
+        }
+    }
+
+    public void C_Map()
+    {
+        SceneManager.LoadScene("Customization", LoadSceneMode.Single);
+        NetworkManagerHUD hud = FindObjectOfType<NetworkManagerHUD>();
+        if (hud == null)
+        {
+            hud.showGUI = true;
+        }
     }
 }

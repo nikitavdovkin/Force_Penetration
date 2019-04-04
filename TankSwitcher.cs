@@ -1,25 +1,19 @@
-﻿using System.IO;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TankSwitcher : MonoBehaviour {
 
     public GameObject tank_1;
     public GameObject tank_2;
-    string text;
 
     private void Start()
     {
-        using (StreamReader sr = new StreamReader(@"D:\text.txt", System.Text.Encoding.Default))
-        {
-            text = sr.ReadToEnd();
-            sr.Close();
-        }
-        if (text.Contains("False"))
+        int id = PlayerPrefs.GetInt("TankPick");
+        if (id == 0)
         {
             tank_1.SetActive(true);
             tank_2.SetActive(false);
         }
-        if (text.Contains("True"))
+        if (id == 1)
         {
             tank_2.SetActive(true);
             tank_1.SetActive(false);

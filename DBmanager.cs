@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Text.RegularExpressions;
+using System;
 
 public class DBmanager : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class DBmanager : MonoBehaviour
     public InputField pass;
     public new GameObject gameObject; //network ui
     public Text text;
+    public int id_;
 
     public void Log()
     {
@@ -41,9 +44,16 @@ public class DBmanager : MonoBehaviour
         Debug.Log("Server answer: " + download.text);
         text.text += "Server answer: " + download.text + "\n";
 
+        string resultString = Regex.Match(download.text, @"\d+").Value;
+        id_ = Int32.Parse(resultString);
+
+        Debug.Log(id_);
+
+        PlayerPrefs.SetInt("id_", id_);
+
         if (download.text != "User is not found.")
         {
-            if(gameObject.active == false)
+            if (gameObject.active == false)
             {
                 gameObject.active = true;
             }
@@ -54,7 +64,7 @@ public class DBmanager : MonoBehaviour
             Debug.Log("Bad login.");
         }
     }
-	
+
     public IEnumerator Register()
     {
         if (name.text != null && pass.text != null && name.text.Length > 4 && pass.text.Length > 4)
@@ -79,9 +89,8 @@ public class DBmanager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Login or password == nul || .Lenght < 4");
-            text.text += "Login or password == nul || .Lenght < 4\n";
+            Debug.Log("Username or password are wrong");
+            text.text += "username or password are wrong";
         }
-        
     }
 }
