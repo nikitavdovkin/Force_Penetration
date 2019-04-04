@@ -9,7 +9,6 @@ echo 'Cannot connect to the database.';
 exit;
 }
 
-
 function register_user($name,$password)
 {
 $repeatChecker = R::findOne('users', 'name = ?', array($name));
@@ -26,6 +25,13 @@ function get_user($name)
 $user = R::findOne('users', 'name = ?', array($name));
 if(!isset($user)) return 'User is not found.';
 return $user;
+}
+
+function get_id($id)
+{
+    $_SESSION['id'] = $row['id'];
+    $id = $_SESSION['id'];
+return $id;
 }
 
 ?>
